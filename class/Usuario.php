@@ -51,10 +51,7 @@
 
 			$row = $results[0];
 
-			$this->setIdusuario($row['idusuario']);	
-			$this->setDeslogin($row['deslogin']);	
-			$this->setDessenha($row['dessenha']);	
-			$this->setDtcadastro(new DateTime($row['dtcadastro']));	
+			$this->setData($results[0]);	
 		}
 	}	
 
@@ -88,17 +85,44 @@
 
 			$row = $results[0];
 
-			$this->setIdusuario($row['idusuario']);	
-			$this->setDeslogin($row['deslogin']);	
-			$this->setDessenha($row['dessenha']);	
-			$this->setDtcadastro(new DateTime($row['dtcadastro']));	
-		} else {
+			$this->setData($results[0]);	
+
+			} else {
 
 			throw new Exception("Login e/ou senha inválidos.");
 			
 		}
 
 	}
+
+	public function setData($data){
+
+			$this->setIdusuario($row['idusuario']);	
+			$this->setDeslogin($row['deslogin']);	
+			$this->setDessenha($row['dessenha']);	
+			$this->setDtcadastro(new DateTime($row['dtcadastro']));	
+
+	}
+
+
+
+	public function insert(){
+
+		$sql = new Sql();
+
+		$results = $sql->select("CALL sp_usuarios_insert(:LOGIN, :PASSWORD)", array(
+			":LOGIN"=>$this->getDeslogin(),
+			":PASSWORD"=>$this->getDessenha()
+		));
+
+		if (count($results) > 0 ){
+
+			$this->setData($results[0]);
+
+		}
+}
+
+
 
 	public function __toString (){
 

@@ -20,14 +20,18 @@ require_once ("config.php");
 //$usuario->login("lucas", "123456");
 //echo $usuario;
 
-$aluno = new Usuario();
 
-$aluno->setDeslogin("jose");
-$aluno->setDessenha("esoj");
+//Criando um novo usuario
+//$aluno = new Usuario("lucas","sacul");
+//$aluno->insert();
+//echo $aluno;
 
-$aluno->insert();
+$usuario = new Usuario();
 
-echo $aluno;
+$usuario->loadbyId(1);
 
+$usuario->update("alunos","sonula");
+
+echo $usuario;
 
 ?>

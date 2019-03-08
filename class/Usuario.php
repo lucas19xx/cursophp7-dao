@@ -28,7 +28,7 @@
 		}
 
 		public function setDessenha($value){
-			$this->Dessenha = $value;
+			$this->dessenha = $value;
 		}	
 		public function getDtcadastro(){
 			return $this->dtcadastro;
@@ -97,10 +97,10 @@
 
 	public function setData($data){
 
-			$this->setIdusuario($row['idusuario']);	
-			$this->setDeslogin($row['deslogin']);	
-			$this->setDessenha($row['dessenha']);	
-			$this->setDtcadastro(new DateTime($row['dtcadastro']));	
+			$this->setIdusuario($data['idusuario']);	
+			$this->setDeslogin($data['deslogin']);	
+			$this->setDessenha($data['dessenha']);	
+			$this->setDtcadastro(new DateTime($data['dtcadastro']));	
 
 	}
 
